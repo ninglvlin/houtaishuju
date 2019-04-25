@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gallery</title>
+    <link rel="stylesheet" type="text/css" href="css/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+    <link rel="shortcut icon" href="img/bitbug_favicon.ico" />
+</head>
+<body>
+     <!--start header -->
+     <div class="head">
+        <div class="head_left">
+            <span>JANUX</span>
+        </div>
+        <div class="head_right">
+            <i class="iconfont icon-naoling"></i>
+            <i class="iconfont icon-rili"></i>
+            <i class="iconfont icon-youxiang"></i>
+            <div class="rightdiv">
+                <i class="iconfont icon-ren-tougu"></i>
+                <span>Dennis Ji</span>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+    <!-- start list -->
+    <div class="center">
+        <ul class="table_list">
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-newdocumentdashboard"></i><span>Dashboard</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-youxiang"></i><span>Messages</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-tasks"></i><span>Tasks</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-ui-"></i><span>UI Features</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-dashboard"></i><span>Widgets</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-wenjianjia1"></i><span>Dropdown</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-huabanfuben"></i><span>Forms</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-line-dataTables"></i><span>Charts</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-A"></i><span>Typography</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-gallery"></i><span>Gallery</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-echarts_charts"></i><span>Tables</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-rili"></i><span>Calendar</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-wenjianjia"></i><span>File Manager</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-wujiaoxing"></i><span>lcons</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <i class="iconfont icon-suozi"></i><span>Login Page</span>
+                </a>
+            </li>
+        </ul>
+        <div class="table_right">
+            <div class="top">
+                <i class="iconfont icon-fangzi"></i><span><a href="#">Home</a><a href="#"> > </a><a href="#"> Dashboard</a></span>
+            </div>
+        </div>   
+        <div class = "waterfall">
+           <div class = "gallery">
+               <div class = "gallery_img">
+                    <i class="iconfont icon-gallery"></i>
+               </div>
+               <div class = "gallery_txt">
+                   <div class = "txt_left">
+                       <span>Gallery</span>
+                   </div>
+                   <div class = "txt_right">
+                       <img src = "img/2019-04-02_092506.png"/>
+                       <img src = "img/2019-04-02_092533.png"/>
+                       <img src = "img/2019-04-02_092549.png"/>
+                       <img src = "img/2019-04-02_092601.png"/>
+                   </div>
+               </div>
+           </div>
+           <div id = "falls">
+           </div>
+        </div>
+    </div>
+
+    <!-- end list -->
+    <div class="footer">
+        <p>© 2013 <a href="#">JANUXResponsive Dashboard</a> More Templates<a href="#">模板之家</a> - Collect from <a href="#">网页模板</a></p>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    //已知：列数：6，每张的宽度是一样，是253。
+    
+    //每张图片的宽度是253
+    //每行放6张图片
+     
+    //1、循环产生70张图片
+    function createImg(){
+        for(let i=1;i<=70;i++){
+            let imgDom = document.createElement("img");
+            // imgDom.src="img/"+i+".jpg";
+            imgDom.src=`img/${i}.jpg`;
+            imgDom.style.position ="absolute";
+            imgDom.style.width = "253px";
+            imgDom.style.left = "-10000px";
+            $("#falls").appendChild(imgDom);
+        }
+    }	
+    
+    //2、改变每张图片的left和top
+    function updateLeftAndTop(){
+    
+        //计算列数：
+        let clientWidth = $("#falls").clientWidth || $("#falls").clientWidth;
+        let colsCount = parseInt(clientWidth/253);
+    
+        //计算间隔的宽度
+        let spaceWidth =  (clientWidth%253)/(colsCount+1);
+    
+        //定义一个数组，放每一列所有图片高度和。
+        let arr=[];
+        for(let i=0;i<colsCount;i++){
+            arr.push(0);
+        }
+        
+        let imgDoms = $("img");
+        for(let i=0;i<imgDoms.length;i++){
+            let colsIndex= i%colsCount;//列下标
+            imgDoms[i].style.left = (colsIndex+1)*spaceWidth+colsIndex*253 +"px" ;
+            imgDoms[i].style.top = arr[colsIndex]+"px";
+    
+            arr[colsIndex] = arr[colsIndex]+imgDoms[i].offsetHeight;
+        }
+    }
+    
+    window.onload = ()=>{
+        createImg();
+        let imgDoms = $("img");
+        let myTimer  = setInterval(function(){
+            if(imgDoms[imgDoms.length-1].offsetHeight>0){
+                window.clearInterval(myTimer);
+                updateLeftAndTop();
+            }
+        },20);
+    
+        window.onresize = function(){
+            updateLeftAndTop();
+        }
+    }
+    
+    function $(str){
+        if(str.charAt(0)=="#"){
+            return document.getElementById(str.substring(1));
+        }else if(str.charAt(0)=="."){
+            return document.getElementsByClassName(str.substring(1));
+        }else{
+            return document.getElementsByTagName(str);
+        }
+    }	
+    
+    </script>
